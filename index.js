@@ -1,12 +1,12 @@
-const sequelize = require("./libs/sequelize");
+const express = require('express');
+const config = require('./config');
+const routerApi = require('./routes');
 
-async function TestConnection() {
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-}
+const app = express();
+app.use(express.json());
 
-TestConnection()
+routerApi(app);
+
+app.listen(config.port, () => {
+  console.log('Running on http://localhost:' + config.port);
+});
