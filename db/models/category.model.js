@@ -32,7 +32,12 @@ const CategoryModel = {
 };
 
 class Category extends Model {
-  static associate() {}
+  static associate(models) {
+    this.hasMany(models.Product, {
+      as: 'products',
+      foreignKey: 'category_id',
+    });
+  }
   static config(sequelize) {
     return {
       sequelize,
