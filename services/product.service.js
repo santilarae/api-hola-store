@@ -2,12 +2,18 @@ const { models } = require('../libs/sequelize');
 const boom = require('@hapi/boom');
 
 class ProductService {
+
+  productOptions = {
+    include: ['category'],
+    attributes: { exclude: ['categoryId', 'category_id'] },
+  };
+
   async findAll() {
-    return await models.Product.findAll();
+    return await models.Product.findAll(this.productOptions);
   }
 
   async findById(id) {
-    const product = await models.Product.findByPk(id);
+    const product = await models.Product.findByPk(id, this.productOptions);
     if (!product) {
       throw boom.notFound('Product not found');
     }
