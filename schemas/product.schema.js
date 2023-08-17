@@ -2,7 +2,7 @@ const Joi = require('joi');
 
 const id = Joi.number().integer();
 const title = Joi.string().min(10).max(60);
-const description = Joi.string().min(10).max(500);
+const description = Joi.string().min(10).max(200);
 const price = Joi.number().integer().positive().strict();
 const images = Joi.array().items(Joi.string().uri().required());
 const salePrice = Joi.number().integer().positive().strict();
