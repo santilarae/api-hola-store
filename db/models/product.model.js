@@ -75,7 +75,7 @@ class Product extends Model {
       sequelize,
       tableName: PRODUCT_TABLE,
       modelName: 'Product',
-      timestamps: true,
+      timestamps: false,
     };
   }
 }
