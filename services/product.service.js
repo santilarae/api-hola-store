@@ -19,13 +19,16 @@ class ProductService {
   }
 
   async update(id, changes) {
-    const updatedProduct = await models.Product.findByPk(id);
-    return await updatedProduct.update(changes);
+    const product = await this.findById(id);
+    if (Object.keys(changes).length === 0) {
+      throw boom.notAcceptable('No changes found');
+    }
+    return await product.update(changes);
   }
 
   async delete(id) {
-    const deletedProduct = await models.Product.findByPk(id);
-    await deletedProduct.destroy();
+    const product = await this.findById(id);
+    await product.destroy();
     return id;
   }
 }
