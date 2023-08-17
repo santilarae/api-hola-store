@@ -49,8 +49,8 @@ const ProductModel = {
       model: CATEGORY_TABLE,
       key: 'id',
     },
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
+    onUpdate: 'RESTRICT',
+    onDelete: 'RESTRICT',
   },
   updatedAt: {
     type: DataTypes.DATE,
