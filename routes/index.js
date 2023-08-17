@@ -5,6 +5,7 @@ function routerApi(app) {
 
   app.use('/api/v1', router);
   router.use('/products', require('./products.router'));
+  router.use('/categories', require('./categories.router'));
 
   router.get('/', (req, res) => {
     res.send('API V1 is online');
