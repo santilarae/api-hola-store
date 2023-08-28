@@ -8,9 +8,19 @@ module.exports = {
   development: {
     url: URI,
     dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+      },
+    },
   },
   production: {
     url: URI,
     dialect: 'postgres',
+    dialectOptions: {
+      ssl: {
+        require: true,
+      },
+    },
   },
 };
